@@ -1,0 +1,14 @@
+# Copy this to e.g. bedroom-clock.yaml, edit, then: esphome run bedroom-clock.yaml
+substitutions:
+  name: bedroom-clock
+  friendly_name: Bedroom Clock
+  api_key: !secret api_key_bedroom          # generate: openssl rand -base64 32
+  # temp_offset_c: "-6.5"                   # the SHT3x sits next to the LEDs/battery and reads high; trim against a reference
+  # ldr_dark_v: "0.7"                       # light sensor volts with the sensor covered (see the "Ambient Light" entity)
+  # ldr_bright_v: "2.6"                     # ... and in a bright room
+  # timezone: America/New_York
+  # weather_entity: weather.home            # Home Assistant weather entity
+  # outdoor_temp_entity: sensor.outdoor_temperature   # Home Assistant outdoor temperature in deg F
+
+packages:
+  base: !include ulanzi-alarm-base.yaml

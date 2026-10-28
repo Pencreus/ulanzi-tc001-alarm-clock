@@ -1,0 +1,11 @@
+# allow-list only: everything else (secrets, firmware images, logs, personal device files) stays local
+/*
+!/.gitignore
+!/LICENSE
+!/README.md
+!/ulanzi-alarm-base.yaml
+!/clockui.h
+!/example-clock.yaml
+!/secrets.yaml.example
+!/flash-clock.sh
+!/verify-fix.sh

@@ -410,11 +410,11 @@ interval:
           if (id(alarm_ringing)) {
             b = 0.7f;
           } else if (id(bright_mode) == 1) {
-            b = 0.10f;
+            b = 0.28f;
           } else if (id(bright_mode) == 2) {
-            b = 0.30f;
+            b = 0.45f;
           } else if (id(bright_mode) == 3) {
-            b = 0.60f;
+            b = 0.70f;
           } else {
             float v = id(ldr_v).state;
             if (std::isnan(v)) {
@@ -422,7 +422,7 @@ interval:
             } else {
               float t = (v - ${ldr_dark_v}) / (${ldr_bright_v} - ${ldr_dark_v});
               t = std::max(0.0f, std::min(1.0f, t));
-              b = 0.06f + 0.54f * t;
+              b = 0.26f + 0.34f * t;   // floor keeps the LEDs visible after gamma + 30% colour correction
             }
           }
           if (fabsf(b - id(cur_bright)) > 0.015f) {

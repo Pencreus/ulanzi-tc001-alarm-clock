@@ -7,6 +7,8 @@ substitutions:
   timezone: America/Los_Angeles
   weather_entity: weather.home                  # Home Assistant weather entity (condition text)
   outdoor_temp_entity: sensor.outdoor_temperature  # Home Assistant outdoor temperature (deg F)
+  wk_alarm_time: "07:10:00"   # Mon-Fri default wake time
+  we_alarm_time: "09:00:00"   # Sat-Sun default wake time
   temp_offset_c: "0.0"
   ldr_dark_v: "0.7"
   ldr_bright_v: "2.6"
@@ -133,14 +135,14 @@ datetime:
     name: "Mon-Fri Wake Time"
     type: time
     optimistic: true
-    initial_value: "07:10:00"
+    initial_value: "${wk_alarm_time}"
     restore_value: true
   - platform: template
     id: we_alarm
     name: "Sat-Sun Wake Time"
     type: time
     optimistic: true
-    initial_value: "09:00:00"
+    initial_value: "${we_alarm_time}"
     restore_value: true
 
 button:

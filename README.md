@@ -46,8 +46,12 @@ two mid-transfer, after which the macOS port stays stuck until the cable is phys
   `verify-fix.sh` checks every chunk and rewrites bad ones. Run them from a normal terminal.
   `./flash-clock.sh firmware/<name>.factory.bin`
 - After the first successful flash, **update over Wi-Fi only**.
-- The stock firmware has a Wi-Fi `/update` page; uploading the ESPHome `.ota.bin` there should avoid
-  USB entirely. *Not yet verified.*
+- **A second clock needs no USB at all.** The stock firmware has an ElegantOTA page at
+  `http://<stock-clock-ip>/update` (find it as `clock.local`). It takes a multipart POST with the file's
+  MD5 and the image as field `firmware`, which worked with the ESPHome `.ota.bin`:
+  `curl -F MD5=$(md5 -q fw.ota.bin) -F "firmware=@fw.ota.bin;filename=firmware" http://<ip>/update`
+  The clock then reboots straight into ESPHome. If the upload fails, the clock stays on stock.
+- The ESPHome web page also has an OTA upload box, so any later `.bin` can be loaded from a browser.
 
 ## Status
 
